@@ -10,6 +10,10 @@ namespace NguyenHuongGiangBTH2.Data
 
         }
         public DbSet<Student> Students {get; set;}
+        public DbSet<NguyenHuongGiangBTH2.Models.Person>? Person { get; set; }
+        public DbSet<NguyenHuongGiangBTH2.Models.Employee>? Employee { get; set; }
+        public DbSet<NguyenHuongGiangBTH2.Models.Customer>? Customer { get; set; }
+        
         
     }
 }

@@ -10,87 +10,87 @@ using NguyenHuongGiangBTH2.Models;
 
 namespace NguyenHuongGiangBTH2.Controllers
 {
-    public class StudentController : Controller
+    public class PersonController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public StudentController(ApplicationDbContext context)
+        public PersonController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Student
+        // GET: Person
         public async Task<IActionResult> Index()
         {
-              return _context.Students != null ? 
-                          View(await _context.Students.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Students'  is null.");
+              return _context.Person != null ? 
+                          View(await _context.Person.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Person'  is null.");
         }
 
-        // GET: Student/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Person/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Person == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var person = await _context.Person
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (student == null)
+            if (person == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(person);
         }
 
-        // GET: Student/Create
+        // GET: Person/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Student/Create
+        // POST: Person/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,StudentID,StudentName")] Student student)
+        public async Task<IActionResult> Create([Bind("ID,Name,Age")] Person person)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                _context.Add(person);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(person);
         }
 
-        // GET: Student/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Person/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Person == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var person = await _context.Person.FindAsync(id);
+            if (person == null)
             {
                 return NotFound();
             }
-            return View(student);
+            return View(person);
         }
 
-        // POST: Student/Edit/5
+        // POST: Person/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,StudentID,StudentName")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Age")] Person person)
         {
-            if (id != student.ID)
+            if (id != person.ID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace NguyenHuongGiangBTH2.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(person);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.ID))
+                    if (!PersonExists(person.ID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace NguyenHuongGiangBTH2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(person);
         }
 
-        // GET: Student/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Person/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Person == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var person = await _context.Person
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (student == null)
+            if (person == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(person);
         }
 
-        // POST: Student/Delete/5
+        // POST: Person/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Students == null)
+            if (_context.Person == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Students'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Person'  is null.");
             }
-            var student = await _context.Students.FindAsync(id);
-            if (student != null)
+            var person = await _context.Person.FindAsync(id);
+            if (person != null)
             {
-                _context.Students.Remove(student);
+                _context.Person.Remove(person);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentExists(string id)
+        private bool PersonExists(int id)
         {
-          return (_context.Students?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Person?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

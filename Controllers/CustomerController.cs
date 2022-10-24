@@ -10,87 +10,87 @@ using NguyenHuongGiangBTH2.Models;
 
 namespace NguyenHuongGiangBTH2.Controllers
 {
-    public class StudentController : Controller
+    public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public StudentController(ApplicationDbContext context)
+        public CustomerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
-        // GET: Student
+        // GET: Customer
         public async Task<IActionResult> Index()
         {
-              return _context.Students != null ? 
-                          View(await _context.Students.ToListAsync()) :
-                          Problem("Entity set 'ApplicationDbContext.Students'  is null.");
+              return _context.Customer != null ? 
+                          View(await _context.Customer.ToListAsync()) :
+                          Problem("Entity set 'ApplicationDbContext.Customer'  is null.");
         }
 
-        // GET: Student/Details/5
-        public async Task<IActionResult> Details(string id)
+        // GET: Customer/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Customer == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var customer = await _context.Customer
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (student == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(customer);
         }
 
-        // GET: Student/Create
+        // GET: Customer/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Student/Create
+        // POST: Customer/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,StudentID,StudentName")] Student student)
+        public async Task<IActionResult> Create([Bind("ID,Name,Age")] Customer customer)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(student);
+                _context.Add(customer);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(customer);
         }
 
-        // GET: Student/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        // GET: Customer/Edit/5
+        public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Customer == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students.FindAsync(id);
-            if (student == null)
+            var customer = await _context.Customer.FindAsync(id);
+            if (customer == null)
             {
                 return NotFound();
             }
-            return View(student);
+            return View(customer);
         }
 
-        // POST: Student/Edit/5
+        // POST: Customer/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,StudentID,StudentName")] Student student)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,Name,Age")] Customer customer)
         {
-            if (id != student.ID)
+            if (id != customer.ID)
             {
                 return NotFound();
             }
@@ -99,12 +99,12 @@ namespace NguyenHuongGiangBTH2.Controllers
             {
                 try
                 {
-                    _context.Update(student);
+                    _context.Update(customer);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.ID))
+                    if (!CustomerExists(customer.ID))
                     {
                         return NotFound();
                     }
@@ -115,49 +115,49 @@ namespace NguyenHuongGiangBTH2.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(student);
+            return View(customer);
         }
 
-        // GET: Student/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        // GET: Customer/Delete/5
+        public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Students == null)
+            if (id == null || _context.Customer == null)
             {
                 return NotFound();
             }
 
-            var student = await _context.Students
+            var customer = await _context.Customer
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (student == null)
+            if (customer == null)
             {
                 return NotFound();
             }
 
-            return View(student);
+            return View(customer);
         }
 
-        // POST: Student/Delete/5
+        // POST: Customer/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(string id)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Students == null)
+            if (_context.Customer == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Students'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Customer'  is null.");
             }
-            var student = await _context.Students.FindAsync(id);
-            if (student != null)
+            var customer = await _context.Customer.FindAsync(id);
+            if (customer != null)
             {
-                _context.Students.Remove(student);
+                _context.Customer.Remove(customer);
             }
             
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudentExists(string id)
+        private bool CustomerExists(int id)
         {
-          return (_context.Students?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Customer?.Any(e => e.ID == id)).GetValueOrDefault();
         }
     }
 }

@@ -4,12 +4,8 @@ namespace NguyenHuongGiangBTH2.Models
 {
     public class Student
     {
-        public int Id { get; set; }
-        public string? Title { get; set; }
-
-        [DataType(DataType.Date)]
-        public DateTime ReleaseDate { get; set; }
-        public string? Genre { get; set; }
-        public decimal Price { get; set; }
+         public string? ID {get; set;}
+        public string? StudentID {get; set;}
+        public string? StudentName {get; set;}
     }
 }
