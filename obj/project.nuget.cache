@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Lq3ktqRGzN41Y8XyjvLwNx5pEyREiAZUs9IOrU4B42/5A9fYNz3hv5KjjU5mmf0l/5/radirG27fKdIym94ijQ==",
+  "dgSpecHash": "/eQOvyOYwRl+nosWHW8GlKVBTB43g5FnliYjX6sdhiFFVJbzVXPiXeZyQrLlymIpErMcmN4ESCe2QlEtoJhpgw==",
   "success": true,
-  "projectFilePath": "c:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj",
+  "projectFilePath": "C:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\gokunnn\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gokunnn\\.nuget\\packages\\messagepack\\2.1.152\\messagepack.2.1.152.nupkg.sha512",

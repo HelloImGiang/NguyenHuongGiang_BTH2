@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj": {}
+    "C:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj": {}
   },
   "projects": {
-    "c:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj": {
+    "C:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj",
+        "projectUniqueName": "C:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj",
         "projectName": "NguyenHuongGiangBTH2",
-        "projectPath": "c:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj",
+        "projectPath": "C:\\Giang\\NguyenHuongGiangBTH2\\NguyenHuongGiangBTH2.csproj",
         "packagesPath": "C:\\Users\\gokunnn\\.nuget\\packages\\",
-        "outputPath": "c:\\Giang\\NguyenHuongGiangBTH2\\obj\\",
+        "outputPath": "C:\\Giang\\NguyenHuongGiangBTH2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

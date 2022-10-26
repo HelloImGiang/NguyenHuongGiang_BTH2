@@ -36,7 +36,7 @@ namespace NguyenHuongGiangBTH2.Controllers
             }
 
             var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.StudentID == id);
             if (student == null)
             {
                 return NotFound();
@@ -56,7 +56,7 @@ namespace NguyenHuongGiangBTH2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,StudentID,StudentName")] Student student)
+        public async Task<IActionResult> Create([Bind("StudentID,StudentName,StudentAge")] Student student)
         {
             if (ModelState.IsValid)
             {
@@ -88,9 +88,9 @@ namespace NguyenHuongGiangBTH2.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(string id, [Bind("ID,StudentID,StudentName")] Student student)
+        public async Task<IActionResult> Edit(string id, [Bind("StudentID,StudentName,StudentAge")] Student student)
         {
-            if (id != student.ID)
+            if (id != student.StudentID)
             {
                 return NotFound();
             }
@@ -104,7 +104,7 @@ namespace NguyenHuongGiangBTH2.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudentExists(student.ID))
+                    if (!StudentExists(student.StudentID))
                     {
                         return NotFound();
                     }
@@ -127,7 +127,7 @@ namespace NguyenHuongGiangBTH2.Controllers
             }
 
             var student = await _context.Students
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.StudentID == id);
             if (student == null)
             {
                 return NotFound();
@@ -157,7 +157,7 @@ namespace NguyenHuongGiangBTH2.Controllers
 
         private bool StudentExists(string id)
         {
-          return (_context.Students?.Any(e => e.ID == id)).GetValueOrDefault();
+          return (_context.Students?.Any(e => e.StudentID == id)).GetValueOrDefault();
         }
     }
 }
